@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url(./assets/cloudy.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, .6);
+    width: 36rem;
+    height: 100vh;
+    padding: 1rem 0 0 3rem;
+}
+.search{
+    display: flex;
+    align-items: end;
+    gap: .5rem;
+    margin-bottom: 4rem;
+}
+h1 {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #040404;
+    background: transparent;
+}
+
+button {
+    padding: 10px;
+    height: 5rem;
+    width: 30%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+#weather-details,
+#weatherInfo{
+    visibility: hidden;
+}
+#weatherInfo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+#weatherInfo h1{
+    font-size: 4rem;
+}
