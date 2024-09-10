@@ -14,7 +14,7 @@ function getBackgroundImage(condition) {
 
 function getWeather() {
     const cityInput = document.getElementById('cityInput').value || "addis";
-    const apiKey = 'e311738df7244eda99f152947241605'; 
+    const apiKey = process.env.API_KEY;
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}&aqi=no`;
 
     fetch(apiUrl)
@@ -60,8 +60,12 @@ window.addEventListener('DOMContentLoaded', () => {
     getWeather();
 });
 const cityInput = document.getElementById('cityInput')
+const getBtn = document.getElementById('get')
 cityInput.addEventListener('keyup', (e)=>{
     if(e.key === 'Enter'){
         getWeather();
     }
+})
+getBtn.addEventListener('click', ()=>{
+        getWeather();
 })

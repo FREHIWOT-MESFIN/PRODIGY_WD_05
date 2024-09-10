@@ -1,0 +1,14 @@
+{
+    "scripts": {
+        "start": "webpack serve --mode development"
+    },
+    "devDependencies": {
+        "webpack": "^5.94.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.1.0",
+        "webpack-env": "^0.8.0"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5"
+    }
+}
