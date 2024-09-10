@@ -1,23 +1,28 @@
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 module.exports = {
-  entry: './index.js', // Correct entry point
+  mode: 'production', 
+  entry: './index.js', 
   output: {
-    filename: 'bundle.js', // Output bundle filename
-    path: path.resolve(__dirname, 'dist') // Output directory
+    filename: 'bundle.js', 
+    path: path.resolve(__dirname, 'dist') 
+  },
+  devServer: {
+    static: path.resolve(__dirname), 
+    open: true, 
+    hot: true
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.API_KEY': JSON.stringify(process.env.API_KEY) // Inject environment variables
+      'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
     })
   ],
   module: {
     rules: [
       {
-        test: /\.css$/, // Handle CSS files
+        test: /\.css$/, 
         use: ['style-loader', 'css-loader']
       }
     ]
