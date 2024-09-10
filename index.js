@@ -1,3 +1,5 @@
+import './style.css'; 
+
 const url = {
     rainy: require('./assets/rainy.jpg'),
     sunny: require('./assets/sunny.jpg'),
@@ -15,12 +17,13 @@ function getBackgroundImage(condition) {
 function getWeather() {
     const cityInput = document.getElementById('cityInput').value || "addis";
     const apiKey = process.env.API_KEY;
+    console.log(apiKey)
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityInput}&aqi=no`;
 
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+
 
             const weatherInfoDiv = document.getElementById('weatherInfo');
             const weatherDetailDiv = document.getElementById('weather-details');
