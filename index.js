@@ -1,8 +1,8 @@
 const url = {
-    rainy: "./assets/rainy.jpg",
-    sunny: "./assets/sunny.jpg",
-    cloudy: "./assets/cloudy.jpg",
-    clear: "./assets/clear.jpg",
+    rainy: require('./assets/rainy.jpg'),
+    sunny: require('./assets/sunny.jpg'),
+    cloudy: require('./assets/cloudy.jpg'),
+    clear: require('./assets/clear.jpg'),
 };
 
 function getBackgroundImage(condition) {
@@ -57,7 +57,11 @@ function getWeather() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    getWeather();
+    try {
+        getWeather(); 
+    } catch (error) {
+        console.log(error)
+    }
 });
 const cityInput = document.getElementById('cityInput')
 const getBtn = document.getElementById('get')

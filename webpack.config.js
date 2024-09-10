@@ -1,21 +1,24 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 require('dotenv').config();
 
 module.exports = {
   mode: 'production', 
-  entry: './index.js', 
+  entry: './index.js',
   output: {
-    filename: 'bundle.js', 
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
-  devServer: {
-    static: path.resolve(__dirname), 
-    open: true, 
-    hot: true
+    publicPath: '/' 
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html' 
+    }),
+    new MiniCssExtractPlugin({
+      filename: './style.css',
+    }),
     new webpack.DefinePlugin({
       'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
     })
@@ -23,8 +26,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/, 
-        use: ['style-loader', 'css-loader']
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|svg)$/,
+        type: 'asset/resource', // Handles image files
+        generator: {
+          filename: 'assets/[name][ext][query]' // Output path for images
+        }
       }
     ]
   }
